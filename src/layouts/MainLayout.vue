@@ -53,14 +53,13 @@ const linksList = [
   {
     title: 'Menu',
     icon: 'home',
-   
-    
+    route: '/',
   },
   {
     title: 'Geral',
     icon: 'straight',
-   
-    iconColor: 'red' // Corrigi para usar iconColor
+    iconColor: 'red', // Corrigi para usar iconColor,
+    route: '/info',
   },
   {
     title: 'Casa Civil',
@@ -76,8 +75,8 @@ const linksList = [
   {
     title: 'Polícia Militar Convencional sem cela',
     icon: 'straight',
-   
     iconColor: 'grey',
+    route: '/PmSC',
   },
   {
     title: 'Polícia Militar Convencional Descaracterizada',

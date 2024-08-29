@@ -340,14 +340,14 @@ margin-top: 20px;
 }
 .grafico-item2{
   height: 400px;
-  width: 600px;
+  width: 500px;
 }
 .grafico-item3{
   height: 600px;
-  width: 600px;
+  width: 500px;
 }
 .grafico-item4{
   height: 600px;
-  width: 600px;
+  width: 500px;
 }
 </style>
