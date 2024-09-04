@@ -65,6 +65,7 @@ const linksList = [
     title: 'Casa Civil',
     icon: 'straight', // Coloquei um ícone apropriado,
     iconColor: 'blue',
+    route: '/CasaCivil',
   },
   {
     title: 'Secretaria de Defesa Social Descaracterizada',

@@ -10,7 +10,7 @@
        
             </div>
             <div>
-              <h5>Polícia Militar Sem Cela</h5>
+              <h5>Casa Civil</h5>
              
               <div class="progresso-descricao">
                   <span class="descricao-texto">
@@ -62,7 +62,7 @@
             width: 200,  // Defina a largura desejada
             height: 200, // Defina a altura desejada
           },
-          labels: ['S10', 'CRETA', 'SPIN'],
+          labels: ['S10'],
           dataLabels: {
             enabled: true,
             formatter: function (val, opts) {
@@ -146,7 +146,7 @@
           intersect: false
         },
         xaxis: {
-          categories: ['INSULFILM G20', 'GIROFLEX', 'STROBOS', 'CAPA DE BANCO E PISO', 'PLOTAGEM', 'ABASTECIMENTO','LAVAGEM','PROTETOR DE CAÇAMBA'],
+          categories: ['INSULFILM', 'VELADO', 'STROBOS', 'CAPA DE BANCO E PISO', 'CAPOTA MARÍTIMA','PROTETOR DE CAÇAMBA', 'ABASTECIMENTO','LAVAGEM'],
         },
         },
        
@@ -175,66 +175,34 @@
 
         this.chartSeries = [
           this.qtdCarrosS10,
-          this.qtdCarrosCreta,
-          this.qtdCarrosSpin
         ];
        
         this.barChartSeries1 = [
         {
           name: 'S10',  // Nome da série 1
           data: [
-            { x: 'INSULFILM G20', y: 44, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
-            { x: 'GIROFLEX', y: 55, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
-            { x: 'STROBOS', y: 41, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
-            { x: 'CAPA DE BANCO E PISO', y: 64, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
-            { x: 'PLOTAGEM', y: 22, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
-            { x: 'ABASTECIMENTO', y: 43, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
-            { x: 'LAVAGEM', y: 21, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
-            { x: 'PROTETOR DE CAÇAMBA', y: 137, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] }
+            { x: 'INSULFILM', y: 2, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
+            { x: 'VELADO', y: 2, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
+            { x: 'STROBOS', y: 2, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
+            { x: 'CAPA DE BANCO E PISO', y: 2, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
+            { x: 'CAPOTA MARÍTIMA', y: 2, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
+            { x: 'PROTETOR DE CAÇAMBA', y: 2, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
+            { x: 'ABASTECIMENTO', y: 2, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] },
+            { x: 'LAVAGEM', y: 2, goals: [{ name: 'Expectativa', value: this.qtdCarrosS10, strokeColor: '#FF8C00' }] }
           ]
         }, 
-        {
-          name: 'CRETA',  // Nome da série 2
-          data: [
-            { x: 'INSULFILM G20', y: 53, goals: [{ name: 'Expectativa', value: this.qtdCarrosCreta, strokeColor: '#FF8C00' }] },
-            { x: 'GIROFLEX', y: 32, goals: [{ name: 'Expectativa', value: this.qtdCarrosCreta, strokeColor: '#FF8C00' }] },
-            { x: 'STROBOS', y: 33, goals: [{ name: 'Expectativa', value: this.qtdCarrosCreta, strokeColor: '#FF8C00' }] },
-            { x: 'CAPA DE BANCO E PISO', y: 52, goals: [{ name: 'Expectativa', value: this.qtdCarrosCreta, strokeColor: '#FF8C00' }] },
-            { x: 'PLOTAGEM', y: 13, goals: [{ name: 'Expectativa', value: this.qtdCarrosCreta, strokeColor: '#FF8C00' }] },
-            { x: 'ABASTECIMENTO', y: 44, goals: [{ name: 'Expectativa', value: this.qtdCarrosCreta, strokeColor: '#FF8C00' }] },
-            { x: 'LAVAGEM', y: 32, goals: [{ name: 'Expectativa', value: this.qtdCarrosCreta, strokeColor: '#FF8C00' }] }
-          ]
-        },
-        {
-          name: 'SPIN',  // Nome da série 3
-          data: [
-            { x: 'INSULFILM G20', y: 10, goals: [{ name: 'Expectativa', value: this.qtdCarrosSpin, strokeColor: '#FF8C00' }] },
-            { x: 'GIROFLEX', y: 10, goals: [{ name: 'Expectativa', value: this.qtdCarrosSpin, strokeColor: '#FF8C00' }] },
-            { x: 'STROBOS', y: 10, goals: [{ name: 'Expectativa', value: this.qtdCarrosSpin, strokeColor: '#FF8C00' }] },
-            { x: 'CAPA DE BANCO E PISO', y: 10, goals: [{ name: 'Expectativa', value: this.qtdCarrosSpin, strokeColor: '#FF8C00' }] },
-            { x: 'PLOTAGEM', y: 10, goals: [{ name: 'Expectativa', value: this.qtdCarrosSpin, strokeColor: '#FF8C00' }] },
-            { x: 'ABASTECIMENTO', y: 10, goals: [{ name: 'Expectativa', value: this.qtdCarrosSpin, strokeColor: '#FF8C00' }] },
-            { x: 'LAVAGEM', y: 10, goals: [{ name: 'Expectativa', value: this.qtdCarrosSpin, strokeColor: '#FF8C00' }] }
-          ]
-        },
+       
         ]
         
     
       }
     },
     computed: {
-      qtdCarrosCreta() {
-        return this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'POLÍCIA MILITAR VIATURA CONVENCIONAL SEM CELA').length;
-        
-      },
       qtdCarrosS10() {
-        return  this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'POLÍCIA MILITAR VIATURA CONVENCIONAL SEM CELA').length;
-      },
-      qtdCarrosSpin() {
-        return this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'POLÍCIA MILITAR VIATURA CONVENCIONAL SEM CELA').length;
+        return  this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'CASA CIVIL  + CAPOTA MRÍTIMA + INSULFILM + ESTROBO DE FAROL + VELADO + ESTROBO DE GRADE + CAPA DE BANCO + REVESTIMENTO DE PISO').length;
       },
       qtdCarrosTotal() {
-        return this.carros.filter(carro => carro.TIPO === 'POLÍCIA MILITAR VIATURA CONVENCIONAL SEM CELA').length;
+        return this.carros.filter(carro => carro.TIPO === 'CASA CIVIL  + CAPOTA MRÍTIMA + INSULFILM + ESTROBO DE FAROL + VELADO + ESTROBO DE GRADE + CAPA DE BANCO + REVESTIMENTO DE PISO').length;
       }
 
     },
