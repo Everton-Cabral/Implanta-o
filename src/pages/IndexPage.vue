@@ -5,7 +5,7 @@
       filled 
       type="search" 
       hint="Digite o Chassi ou a Placa"
-      @keyup.enter="consulta" <!-- Adicionando a escuta do evento Enter -->
+      @keyup.enter="consulta"
     >
       <template v-slot:append>
         <q-icon name="search" class="icone" @click="consulta()" />
