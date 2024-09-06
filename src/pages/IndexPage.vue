@@ -1,6 +1,11 @@
 <template>
   <div class="corpo">
-    <q-input v-model="chassi" filled type="search" hint="Digite o Chassi">
+    <q-input 
+      v-model="chassi" 
+      filled 
+      type="search" 
+      hint="Digite o Chassi ou a Placa"
+    >
       <template v-slot:append>
         <q-icon name="search" class="icone" @click="consulta()" />
       </template>
@@ -26,14 +31,19 @@ export default {
   name: 'IndexPage',
   data() {
     return {
-      carros: Carros.Dados, // Certifique-se de acessar 'Dados' corretamente
+      carros: Carros.Dados,
       chassi: '',
-      carro: '' // Inicialize como uma string vazia
+      carro: ''
+    };
+  },
+  watch: {
+    chassi(newValue) {
+      this.chassi = newValue.toUpperCase();
     }
   },
   methods: {
     consulta() {
-      const resultado = this.carros.find(carro => carro.CHASSI === this.chassi);
+      const resultado = this.carros.find(carro => carro.CHASSI === this.chassi || carro.PLACA === this.chassi);
       if (resultado) {
         this.carro = resultado;
       } else {
@@ -45,7 +55,7 @@ export default {
       this.carro = '';
     }
   }
-}
+};
 </script>
 
 <style scoped>
