@@ -56,92 +56,18 @@ const linksList = [
     route: '/',
   },
   {
-    title: 'Geral',
+    title: 'Veículos Recebidos',
     icon: 'straight',
     iconColor: 'red', // Corrigi para usar iconColor,
     route: '/info',
   },
   {
-    title: 'Casa Civil',
+    title: 'Veículos Entregues',
     icon: 'straight', // Coloquei um ícone apropriado,
     iconColor: 'blue',
     route: '/CasaCivil',
   },
-  {
-    title: 'Secretaria de Defesa Social Descaracterizada',
-    icon: 'straight',
-   
-    iconColor: 'green',
-  },
-  {
-    title: 'Polícia Militar Convencional sem cela',
-    icon: 'straight',
-    iconColor: 'grey',
-    route: '/PmSC',
-  },
-  {
-    title: 'Polícia Militar Convencional Descaracterizada',
-    icon: 'straight',
-   
-    iconColor: 'grey',
-  },
-  {
-    title: 'Polícia Militar Convencional com cela',
-    icon: 'straight',
-   
-    iconColor: 'grey',
-  },
-  {
-    title: 'Polícia Militar Convencional Canil',
-    icon: 'straight',
-   
-    iconColor: 'grey',
-  },
-  {
-    title: 'Polícia Militar Trânsito sem cela',
-    icon: 'straight',
-   
-    iconColor: 'yellow',
-  },
-  {
-    title: 'Polícia Civil Descaracterizada',
-    icon: 'straight',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Polícia Civil com cela',
-    icon: 'straight',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Polícia Civil sem cela',
-    icon: 'straight',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Polícia Penitenciária Descaracterizada',
-    icon: 'straight',
-   
-    iconColor: 'yellow',
-  },
-  {
-    title: 'Polícia Penitenciária com cela',
-    icon: 'straight',
-   
-    iconColor: 'yellow',
-  },
-  {
-    title: 'Bombeiros com cela',
-    icon: 'straight',
-   
-    iconColor: 'red',
-  },
-  {
-    title: 'Bombeiros sem cela',
-    icon: 'straight',
-    iconColor: 'red', // Corrigi para usar iconColor
-    
-  }
+
 ]
 
 const leftDrawerOpen = ref(false)

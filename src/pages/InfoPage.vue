@@ -1,28 +1,18 @@
 <template>
-  <div class="corpo">
-    <div class="graficos">
-      <!-- Gráfico Donut existente -->
-      <div class="grafico-item1">
-        <ApexChart :options="chartOptions" :series="chartSeries" />
-      </div>
-
-      <!-- Novo Gráfico de Barras -->
-       
-      <div class="grafico-item2">
-        <ApexChart :options="barChartOptions" :series="barChartSeries" />
-      </div>
-
-      <div class="grafico-item3">
-        <ApexChart :options="barChartOptions2" :series="barChartSeries2" />
-      </div>
-
-      <div class="grafico-item4">
-        <ApexChart :options="barChartOptions3" :series="barChartSeries3" />
-      </div>
+ <div class="corpo">
+  <div class="linha-1">
+    <!-- Gráfico Donut existente -->
+    <div class="grafico-item grafico-item1">
+      <ApexChart :options="chartOptions" :series="chartSeries" />
     </div>
-
-  
+     
+    <!-- Novo Gráfico de Barras -->
+    <div class="grafico-item grafico-item2">
+      <ApexChart :options="barChartOptions2" :series="barChartSeries2" />
+    </div>
   </div>
+</div>
+
 </template>
 
 <script>
@@ -43,8 +33,8 @@ export default {
         chart: {
           id: 'vuechart-example',
           type: 'donut',
-          width: 200,  // Defina a largura desejada
-          height: 200, // Defina a altura desejada
+          width: 300,  // Defina a largura desejada
+          height: 300, // Defina a altura desejada
         },
         labels: ['S10', 'CRETA', 'SPIN'],
         dataLabels: {
@@ -69,6 +59,9 @@ export default {
             }
           }
         },
+        legend: {
+              position: 'bottom'
+            },
         responsive: [{
           breakpoint: 480,
           options: {
@@ -82,7 +75,7 @@ export default {
         }],
         title: {
           text: 'Veiculos Recebidos', // Texto do título
-          align: 'left', // Alinhamento do título
+          align: 'center', // Alinhamento do título
           margin: 10, // Margem acima do título
           offsetY: 0, // Deslocamento vertical do título
           style: {
@@ -95,189 +88,103 @@ export default {
       },
       chartSeries: [],
 
-      /* Grafico Modelo S10 */
+    
 
-      barChartOptions: {
-        chart: {
-          height: 200,
-          width: 200,
-          type: 'bar',
-        },
-        plotOptions: {
-          bar: {
-            horizontal: true,
-          }
-        },
-        colors: ['#1E90FF'],
-        dataLabels: {
-          formatter: function (val, opt) {
-            const goals = opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex].goals;
-            if (goals && goals.length) {
-              return `${val} / ${goals[0].value}`;
-            }
-            return val;
-          }
-        },
-        legend: {
-          show: true,
-          showForSingleSeries: true,
-          customLegendItems: ['QTD Atual', 'QTD a Alcançar'],
-          markers: {
-            fillColors: ['#1E90FF', '#FF8C00']
-          }
-        },
-        title: {
-          text: 'Modelo S10', // Texto do título
-          align: 'center', // Alinhamento do título
-          margin: 10, // Margem acima do título
-          offsetY: 0, // Deslocamento vertical do título
+
+       /* Grafico Modelo teste*/
+
+       barChartOptions2: {
+  chart: {
+    height: 350,
+    width: 500,
+    type: 'bar',
+    stacked: true,
+    toolbar: {
+      show: true
+    },
+    zoom: {
+      enabled: true
+    }
+  },
+  plotOptions: {
+    bar: {
+      horizontal: false,
+      borderRadius: 10,
+      borderRadiusApplication: 'end',
+      borderRadiusWhenStacked: 'last',
+      dataLabels: {
+        total: {
+          enabled: true,
           style: {
-          fontSize: '16px', // Tamanho da fonte do título
-          fontWeight: 'bold', // Peso da fonte do título
-          color: '#263238' // Cor do título
+            fontSize: '13px',
+            fontWeight: 900
           }
         }
-        
-      },
-      
-      barChartSeries: [
-        {
-          name: 'Actual',
-          data: [
-            { x: 'Giro-Flex', y: 70, goals: [{ name: 'Expected', value: 90, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Strobo Farois e Grade', y: 30, goals: [{ name: 'Expected', value: 70, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Capa de Banco e Carpete', y: 67, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Plotagem', y: 67, goals: [{ name: 'Expected', value: 70, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Cela', y: 20, goals: [{ name: 'Expected', value: 30, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Capota', y: 15, goals: [{ name: 'Expected', value: 70, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Protetor de Caçamba', y: 70, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Rastreador', y: 45, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Insufilm', y: 67, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Emplacamento', y: 15, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] }
-          ]
-        }
-      ],
+      }
+    }
+  },
+  xaxis: {
+    type: 'text',
+    categories: [
+    'Casa Civil',
+    'SDS Descaracterizada',
+    'PM sem cela',
+    'PM Descaracterizada',
+    'PM com cela',
+    'PM Canil',
+    'PM Trânsito',
+    'PC Descaracterizada',
+    'PC com cela',
+    'PC sem cela',
+    'PP Descaracterizada',
+    'PP com cela',
+    'Bombeiros com cela',
+    'Bombeiros sem cela',
+    ]
+  },
+  legend: {
+    position: 'right',
+    offsetY: 40,
+    show: true
+  },
+  responsive: [{
+    breakpoint: 480,
+    options: {
+      legend: {
+        position: 'bottom',
+        offsetX: -10,
+        offsetY: 0
+      }
+    }
+  }],
+  fill: {
+    opacity: 1
+  },
+  title: {
+    text: 'Divisão de Veículos',
+    align: 'center',
+    margin: 10,
+    offsetY: 0,
+    style: {
+      fontSize: '16px',
+      fontWeight: 'bold',
+      color: '#263238'
+    }
+  }
+},
+barChartSeries2: [
 
-      /* Grafico Creta */
+ ],
 
-      barChartOptions2: {
-        chart: {
-          height: 200,
-          width: 200,
-          type: 'bar',
-        },
-        plotOptions: {
-          bar: {
-            horizontal: true,
-          }
-        },
-        colors: ['rgb(0, 227, 150)'],
-        dataLabels: {
-          formatter: function (val, opt) {
-            const goals = opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex].goals;
-            if (goals && goals.length) {
-              return `${val} / ${goals[0].value}`;
-            }
-            return val;
-          }
-        },
-        legend: {
-          show: true,
-          showForSingleSeries: true,
-          customLegendItems: ['QTD Atual', 'QTD a Alcançar'],
-          markers: {
-            fillColors: ['rgb(0, 227, 150)', '#FF8C00']
-          }
-        },
-        title: {
-          text: 'Modelo CRETA', // Texto do título
-          align: 'center', // Alinhamento do título
-          margin: 10, // Margem acima do título
-          offsetY: 0, // Deslocamento vertical do título
-          style: {
-          fontSize: '16px', // Tamanho da fonte do título
-          fontWeight: 'bold', // Peso da fonte do título
-          color: '#263238' // Cor do título
-          }
-        }
-        
-      },
-      
-      barChartSeries2: [
-        {
-          name: 'Actual',
-          data: [
-            { x: 'Giro-Flex', y: 70, goals: [{ name: 'Expected', value: 90, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Strobo Farois e Grade', y: 30, goals: [{ name: 'Expected', value: 70, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Capa de Banco e Carpete', y: 67, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Plotagem', y: 67, goals: [{ name: 'Expected', value: 70, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Cela', y: 20, goals: [{ name: 'Expected', value: 30, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Rastreador', y: 67, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Insufilm', y: 67, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
-            { x: 'Emplacamento', y: 84, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] }
-          ]
-        }
-      ],
 
-      /* Grafico Spin */
-      barChartOptions3: {
-        chart: {
-          height: 200,
-          width: 200,
-          type: 'bar',
-        },
-        plotOptions: {
-          bar: {
-            horizontal: true,
-          }
-        },
-        colors: ['rgb(254, 176, 25)'],
-        dataLabels: {
-          formatter: function (val, opt) {
-            const goals = opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex].goals;
-            if (goals && goals.length) {
-              return `${val} / ${goals[0].value}`;
-            }
-            return val;
-          }
-        },
-        legend: {
-          show: true,
-          showForSingleSeries: true,
-          customLegendItems: ['QTD Atual', 'QTD a Alcançar'],
-          markers: {
-            fillColors: ['rgb(254, 176, 25)', '#1E90FF']
-          }
-        },
-        title: {
-          text: 'Modelo SPIN', // Texto do título
-          align: 'center', // Alinhamento do título
-          margin: 10, // Margem acima do título
-          offsetY: 0, // Deslocamento vertical do título
-          style: {
-          fontSize: '16px', // Tamanho da fonte do título
-          fontWeight: 'bold', // Peso da fonte do título
-          color: '#263238' // Cor do título
-          }
-        }
-        
-      },
-      
-      barChartSeries3: [
-        {
-          name: 'Actual',
-          data: [
-            { x: 'Giro-Flex', y: 70, goals: [{ name: 'Expected', value: 90, strokeWidth: 5, strokeHeight: 10, strokeColor: '#1E90FF' }] },
-            { x: 'Strobo Farois e Grade', y: 30, goals: [{ name: 'Expected', value: 70, strokeWidth: 5, strokeHeight: 10, strokeColor: '#1E90FF' }] },
-            { x: 'Capa de Banco e Carpete', y: 50, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#1E90FF' }] },
-            { x: 'Plotagem', y: 67, goals: [{ name: 'Expected', value: 70, strokeWidth: 5, strokeHeight: 10, strokeColor: '#1E90FF' }] },
-            { x: 'Cela', y: 20, goals: [{ name: 'Expected', value: 30, strokeWidth: 5, strokeHeight: 10, strokeColor: '#1E90FF' }] },
-            { x: 'Rastreador', y: 67, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#1E90FF' }] },
-            { x: 'Insufilm', y: 77, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#1E90FF' }] },
-            { x: 'Emplacamento', y: 54, goals: [{ name: 'Expected', value: 99, strokeWidth: 5, strokeHeight: 10, strokeColor: '#1E90FF' }] }
-          ]
-        }
-      ]
+
+
+
+
+     
+     
+     
+    
       
     };
 
@@ -299,7 +206,94 @@ export default {
         this.qtdCarrosCreta,
         this.qtdCarrosSpin
       ];
+   
+      this.barChartSeries2 = [
+{
+            name: 'S10',
+            data: [
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'CASA CIVIL').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'SDS DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PM SEM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PM DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PM COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PM CANIL').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PM TRANSITO').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PC DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PC COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PC SEM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PP DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'PP COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'BOMBEIROS COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'S10' && carro.TIPO === 'BOMBEIROS SEM CELA').length,
+                    
+                  ]
+          },
+          {
+            name: 'CRETA',
+            data: [
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'CASA CIVIL').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'SDS DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PM SEM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PM DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PM COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PM CANIL').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PM TRANSITO').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PC DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PC COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PC SEM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PP DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'PP COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'BOMBEIROS COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'CRETA' && carro.TIPO === 'BOMBEIROS SEM CELA').length,
+                     
+                  ]
+          },
+          {
+            name: 'SPIN',
+            data: [
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'CASA CIVIL').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'SDS DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PM SEM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PM DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PM COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PM CANIL').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PM TRANSITO').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PC DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PC COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PC SEM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PP DESCARACTERIZADA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'PP COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'BOMBEIROS COM CELA').length,
+                    this.carros.filter(carro => carro.MODELO === 'SPIN' && carro.TIPO === 'BOMBEIROS SEM CELA').length,
+                     
+                  ]
+        },
+ ],
+
+      
+
+      this.barChartSeries = [
+      {
+          name: 'ENTREGUES',
+          data: [
+            { x: 'Casa Civil', y: 70, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoCasaCivil, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'SDS Descaracterizada', y: 30, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoCasaSDSDescaracterizado, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PM sem cela', y:0, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPmSemCela, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PM Descaracterizada', y: 67, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPmDescaracterizado, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PM com cela', y: 20, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPMComCela, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PM Canil', y: 15, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPMCanil, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PM Trânsito', y: 70, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPMTransito, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PC Descaracterizada', y: 45, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPCDescaracterizada, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PC com cela', y: 67, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPCComCela, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PC sem cela', y: 15, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPCSemCela, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PP Descaracterizada', y: 15, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPPDescaracterizada, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'PP com cela', y: 15, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoPPComCela, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] },
+            { x: 'Bombeiros', y: 15, goals: [{ name: 'TOTAL A ENTREGAR', value: this.qtdtTipoBombeiro, strokeWidth: 5, strokeHeight: 10, strokeColor: '#FF8C00' }] }
+          ]
+        }
+      ]
     }
+   
   },
   computed: {
     qtdCarrosCreta() {
@@ -310,7 +304,9 @@ export default {
     },
     qtdCarrosSpin() {
       return this.carros.filter(carro => carro.MODELO === 'SPIN').length;
-    }
+    },
+    
+   
   },
   mounted() {
     this.carregarDados()
@@ -321,33 +317,78 @@ export default {
 <style scoped>
 .corpo {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
   height: 100vh;
+  background-color: #f4f4f9; /* Fundo suave */
+  padding: 10px; /* Espaço ao redor */
 }
-.graficos{
-margin-top: 20px;
+
+.linha-1 {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-}
-.grafico-item1{
-  height: 400px;
-  width: 400px;
+  justify-content: space-between; /* Espaço entre os itens */
+  margin: 10px 0;
+  padding: 10px;
 
 }
-.grafico-item2{
-  height: 400px;
-  width: 500px;
+
+.grafico-item {
+  background-color: #fff; /* Fundo branco para destaque */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 8px; /* Bordas arredondadas */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  padding: 15px;
 }
-.grafico-item3{
-  height: 600px;
-  width: 500px;
+
+.grafico-item:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+  transform: translateY(-5px); /* Elevar levemente o item */
 }
-.grafico-item4{
-  height: 600px;
-  width: 500px;
+
+/* Ajustes para desktop */
+.grafico-item1 {
+  width: 28%; /* Ajusta largura para caber 3 gráficos em tela */
 }
+
+.grafico-item2 {
+  width: 68%; /* Ajusta largura para caber o gráfico maior */
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .grafico-item1, .grafico-item2 {
+    width: 100%; /* Em telas menores, os gráficos ocupam 100% da largura */
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .linha-1 {
+    flex-direction: column; /* Em tablets e dispositivos móveis, alinhar os gráficos verticalmente */
+    justify-content: center;
+  }
+
+  .grafico-item {
+    width: 100%; /* Gráficos ocupam toda a largura */
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .corpo {
+    padding: 5px; /* Reduzir o espaçamento em telas muito pequenas */
+  }
+  
+  .linha-1 {
+    padding: 5px; /* Menos espaço entre os gráficos */
+  }
+
+  .grafico-item {
+    padding: 10px; /* Reduzir o padding em telas pequenas */
+  }
+}
+
 </style>
